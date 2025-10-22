@@ -1,8 +1,8 @@
 import React from "react";
-import { addWorkout } from "../firebase"; // 👈 add this line
+import { addWorkout } from "../firebase"; // 👈 Firestore helper import
 
 export default function ExerciseRow({ row, onChange }) {
-  // Handle completion
+  // Handle completion toggle
   async function onToggle(e) {
     const completed = e.target.checked;
     onChange({ completed });
@@ -10,7 +10,7 @@ export default function ExerciseRow({ row, onChange }) {
     if (completed) {
       // When user marks as done, save to Firestore
       const data = {
-        userId: "magnum", // later: replace with real login user
+        userId: "magnum", // later: replace with actual logged-in user
         date: new Date().toISOString().split("T")[0],
         exercise: row.name,
         sets: row.sets ?? 0,
@@ -19,7 +19,13 @@ export default function ExerciseRow({ row, onChange }) {
         notes: row.notes ?? "",
         done: true,
       };
-      await addWorkout(data);
+
+      try {
+        await addWorkout(data);
+        console.log("✅ Workout successfully saved to Firestore!");
+      } catch (err) {
+        console.error("❌ Workout save failed:", err);
+      }
     }
   }
 
