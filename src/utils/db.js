@@ -1,6 +1,7 @@
 
-import { db } from './firebase'
+import { db } from '../firebase'
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore'
+
 export async function loadWorkouts(uid) {
   const ref = doc(db, 'users', uid)
   const snap = await getDoc(ref)
