@@ -1,12 +1,11 @@
-
 {
-  "name": "magnum-tracker",
+  "name": "workout-tracker",
   "private": true,
   "version": "2.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --open",
-    "build": "vite build",
+    "build": "npx vite build",
     "preview": "vite preview"
   },
   "dependencies": {
