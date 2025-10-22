@@ -1,8 +1,9 @@
 
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { auth } from '../utils/firebase'
+import { auth } from '../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth'
+
 export default function SignUp() {
   const nav = useNavigate()
   const [email, setEmail] = useState('')

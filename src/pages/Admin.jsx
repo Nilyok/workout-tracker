@@ -1,9 +1,9 @@
 
-import React, { useEffect, useState } from 'react'
-import { collection, getDocs } from '../firebase'
+import React, { useEffect, useState } from 'react';
+import { getDocs, collection } from 'firebase/firestore'
 import { db } from '../firebase'
-import { useAuth } from '../utils/authProvider.jsx'
-import { Navigate } from 'react-router-dom'
+import { useAuth } from '../utils/authProvider.jsx';
+import { Navigate } from 'react-router-dom';
 
 export default function Admin() {
   const { user } = useAuth()
